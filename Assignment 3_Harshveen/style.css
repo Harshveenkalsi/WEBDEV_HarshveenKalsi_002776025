@@ -1,0 +1,46 @@
+body {
+    font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
+  }
+
+  #myTable{
+    position: relative;
+    left: 100px;
+    top: 30px;
+    text-align: center;
+  }
+
+  #button, #add{
+    position: relative;
+    left: -40px;
+    top: 20px;
+    padding: 10px;
+  }
+
+  #myTable th{
+    width: 110px;
+    font-size: 14px;
+  }
+  
+  
+h1{
+  position: relative;
+  left: 140px;
+  top: 50px;
+  font-size: 40px;
+}
+p{
+  position: relative;
+  left: 140px;
+  top: 30px;
+  font-size: 16px;
+  color: #777;
+}
+
+h2{
+  position: relative;
+  left: 140px;
+  top: 210px;
+  font-weight: 500;
+  font-size: 13px;
+  color: #aaa;
+}
