@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Stopwatch</title>
+	<link rel="stylesheet" href="main2.css" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="d-flex flex-grow-1">
+            <a class="navbar-brand mx-3" href="index.html"> Welcome</a>
+            
+                <a href="#" class="nav-link m-2 menu-item text-white nav-active" id="logo">
+                    <input type="button" value="" id="name" />
+
+                </a>
+          
+            
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ms-auto flex-nowrap">
+                <li class="nav-item">
+                    <a class="btn btn-primary" href="calculator.html" role="button">Calculator</a>
+
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+	<div class="stopwatch">
+		<div class="time">
+			00:00:00
+		</div>
+		<div class="controls">
+			<button id="start">Start</button>
+			<button id="stop">Stop</button>
+			<button id="reset">Reset</button>
+		</div>
+	</div>
+
+	<script>
+
+		const time = document.querySelector(".stopwatch .time");
+		const strtbtn = document.getElementById("start");
+		const stpbtn = document.getElementById("stop");
+		const rstbtn = document.getElementById("reset");
+
+		let sec = 0;
+		let interval = null;
+
+
+		strtbtn.addEventListener("click", start);
+		stpbtn.addEventListener("click", stop);
+		rstbtn.addEventListener("click", reset);
+
+
+		function timer() {
+			sec++;
+
+			let hrs = Math.floor(sec / 3600);
+			let mins = Math.floor((sec - hrs * 3600) / 60);
+			let secs = sec % 60;
+
+			if (secs < 10) secs = "0" + secs;
+			if (mins < 10) mins = "0" + mins;
+			if (hrs < 10) hrs = "0" + hrs;
+
+			time.innerText = `${hrs}:${mins}:${secs}`;
+		}
+
+		function start() {
+			if (interval) {
+				return;
+			}
+
+			interval = setInterval(timer, 1000);
+		}
+
+		function stop() {
+			clearInterval(interval);
+			interval = null;
+		}
+
+		function reset() {
+			stop();
+			sec = 0;
+			time.innerText = "00:00:00";
+		}
+
+	</script>
+</body>
+
+</html>
